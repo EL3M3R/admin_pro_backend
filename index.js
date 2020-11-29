@@ -9,17 +9,15 @@ const {db_connection} =  require('./database/config')
     const app =   express();
 //configurar CORS
     app.use(cors());
+//lectura y parseo de body
+app.use(express.json())
 //DB connection
     db_connection();
-
-    app.get('/', (req , resp) =>{
-        resp.json({
-            ok:true,
-            msg: 'Hola Mundo'
-        })
-    })
+//Rutas  
+app.use('/api/adminPro/usuarios' , require('./routes/usuariosRoutes'));
+app.use('/api/login' , require('./routes/auth'));
 
 
-    app.listen(process.env.PORT , ( () => {
+app.listen(process.env.PORT , ( () => {
         console.log("servidor corriendo en port"  , process.env.PORT)
-    })) 
+})) 
