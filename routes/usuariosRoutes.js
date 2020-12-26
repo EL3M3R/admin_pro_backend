@@ -9,7 +9,7 @@ const { check } = require('express-validator')
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
 
-router.get('/' , validarJWT  , getUsuarios);
+router.get('/'   , getUsuarios);
 router.post('/registroUsuarios' , 
 [
     validarJWT,
