@@ -13,6 +13,10 @@ app.use(cors());
 app.use(express.json())
 //DB connection
 db_connection();
+
+//Directorio Publico
+app.use( express.static('public') )
+
 //Rutas  
 app.use('/api/adminPro/upload', require('./routes/uploadRouter'));
 app.use('/api/adminPro/todo', require('./routes/busquedas'));

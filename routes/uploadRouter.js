@@ -6,7 +6,7 @@ const  espressFileUpload  = require('express-fileupload')
 
 const router = Router();
 
-const {   filesUploads } = require('../controllers/uploadsController')
+const {   filesUploads , retornaImagen } = require('../controllers/uploadsController')
 
 const { validarJWT } = require('../middlewares/validar-jwt');
 router.use( espressFileUpload() );
