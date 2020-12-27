@@ -47,13 +47,8 @@ const login = async (req, resp = response) => {
 }
 
 const loginGoogle = async (req, resp = response) => {
-
     const googleToken = req.body.token;
-
-
     try {
-
-
         const { name, email, picture } = await googleVerify(googleToken);
 
         const UsuarioDB = Usuario.findOne({ email });
@@ -94,7 +89,22 @@ const loginGoogle = async (req, resp = response) => {
 
 }
 
+
+const renewToken = async( req  , res = response) => {
+
+    const uid = req.uid;
+     //Generar un toekn
+     const token = await generarJWT(uid);
+
+
+    res.json({
+        ok:true,
+         token
+    })
+}
+
 module.exports = {
     login,
-    loginGoogle
+    loginGoogle,
+    renewToken
 }
